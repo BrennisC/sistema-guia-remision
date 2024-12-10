@@ -1,66 +1,78 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Sistema de Gestión de Guías de Remisión
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Este sistema está diseñado para facilitar la emisión y gestión de guías de remisión en negocios. A continuación, se detallan los requisitos y pasos para instalar y ejecutar el proyecto.
 
-## About Laravel
+# Requisitos previos
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Antes de iniciar, asegúrate de tener instalado lo siguiente en tu sistema:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+```bash
+PHP >= 8.1
+Recomendado instalarlo con XAMPP o manualmente según tu sistema operativo.
+Composer (Gestor de dependencias de PHP)
+Descárgalo desde https://getcomposer.org/.
+Node.js y npm (Para compilar recursos frontend)
+Descarga e instala desde https://nodejs.org/.
+MySQL (O cualquier base de datos compatible con Laravel)
+Asegúrate de tener una base de datos creada llamada dbsistema.
+Git (Opcional, para clonar el repositorio)
+Pasos para ejecutar el proyecto
+```
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+# Clonar el repositorio (opcional): Si estás utilizando Git:
 
-## Learning Laravel
+```bash
+git clone https://github.com/tu-usuario/sistema-guia-remision.git
+cd sistema-guia-remision
+```
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# Instalar dependencias:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Ejecuta el siguiente comando en la raíz del proyecto para instalar las dependencias de PHP:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+```bash
+composer install
+```
 
-## Laravel Sponsors
+# Configurar el entorno:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+Duplica el archivo .env.example y renómalo como .env.
+Configura las variables de entorno de tu base de datos en el archivo .env:
+env
 
-### Premium Partners
+```bash
+DB_DATABASE=dbsistema
+DB_USERNAME=tu_usuario
+DB_PASSWORD=tu_contraseña
+```
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+# Generar la clave de la aplicación:
 
-## Contributing
+```bash
+php artisan key:generate
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# Configurar Breeze para autenticación:
 
-## Code of Conduct
+Breeze ya debería estar instalado. Si no lo está, ejecuta:
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+composer require laravel/breeze --dev
+php artisan breeze:install blade
+npm install && npm run dev
+```
 
-## Security Vulnerabilities
+# Migrar la base de datos: Ejecuta las migraciones para crear las tablas necesarias:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+php artisan migrate
+```
 
-## License
+# Ejecutar el servidor de desarrollo:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Levanta el servidor local de Laravel:
+
+```bash
+php artisan serve
+El servidor estará disponible en http://localhost:8000.
+```
