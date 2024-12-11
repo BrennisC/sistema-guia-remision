@@ -7,7 +7,7 @@ Este sistema está diseñado para facilitar la emisión y gestión de guías de 
 Antes de iniciar, asegúrate de tener instalado lo siguiente en tu sistema:
 
 ```bash
-PHP >= 8.1
+PHP =  8.3.9
 Recomendado instalarlo con XAMPP o manualmente según tu sistema operativo.
 Composer (Gestor de dependencias de PHP)
 Descárgalo desde https://getcomposer.org/.
