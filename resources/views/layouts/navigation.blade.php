@@ -41,7 +41,6 @@
             'dashboard' => __('Dashboard'),
             'users.index' => __('Users'),
             'guiaremision.create' => __('GuiaRemision'),
-            'datos.index' => __('Datos')
             ] as $route => $label)
             <a href="{{ route($route) }}" class="block text-gray-600 hover:text-black hover:bg-gray-100 rounded-md py-2 px-3">
                 {{ $label }}
