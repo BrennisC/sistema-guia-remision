@@ -35,7 +35,7 @@
         x-transition:leave-end="opacity-0 transform scale-95">
 
 
-        <nav class="flex flex-col space-y-1 px-4 py-3">
+        <nav class="flex flex-col space-y-2 px-2 py-3">
             <!-- Menu Items -->
             @foreach([
             'dashboard' => __('Dashboard'),
