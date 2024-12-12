@@ -7,9 +7,7 @@
         </x-slot>
 
     </div>
-    <div class="container mt-5">
-        <h1 class="text-center mb-4">Crear Guía de Remisión</h1>
-
+    <div class="container mt-5 justify-center bg-black text-black ">
         @if ($errors->any())
         <div class="alert alert-danger">
             <ul>
@@ -28,7 +26,10 @@
 
         <form action="{{ route('guiaremision.store') }}" method="POST">
             @csrf
-
+            <div class="mb-3">
+                <label for="DUAL" class="form-label">DUAL</label>
+                <input type="text" name="DUAL" id="DUAL" class="form-control" value="{{ old('DUAL', '1') }}" required>
+            </div>
             <div class="mb-3">
                 <label for="SERIEDOC" class="form-label">Serie del Documento</label>
                 <input type="text" name="SERIEDOC" id="SERIEDOC" class="form-control" value="{{ old('SERIEDOC', 'A123') }}" required>
@@ -191,7 +192,7 @@
                 <input type="text" name="ACTIVOS" id="ACTIVOS" class="form-control" value="{{ old('ACTIVOS', '1') }}">
             </div>
 
-            <button type="submit" class="btn btn-primary bg-blue-500 text-black">Guardar Guía de Remisión</button>
+            <button type="submit" class="btn btn-primary bg-blue-500 text-black  rounded w-full">Guardar Guía de Remisión</button>
         </form>
     </div>
 </x-app-layout>

@@ -35,13 +35,12 @@
         x-transition:leave-end="opacity-0 transform scale-95">
 
 
-        <nav class="flex flex-col space-y-1 px-4 py-3">
+        <nav class="flex flex-col space-y-2 px-2 py-3">
             <!-- Menu Items -->
             @foreach([
             'dashboard' => __('Dashboard'),
             'users.index' => __('Users'),
             'guiaremision.create' => __('GuiaRemision'),
-            'datos.index' => __('Datos')
             ] as $route => $label)
             <a href="{{ route($route) }}" class="block text-gray-600 hover:text-black hover:bg-gray-100 rounded-md py-2 px-3">
                 {{ $label }}
