@@ -9,7 +9,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('guiaremision', function (Blueprint $table) {
-            $table->bigInteger('DUAL')->primary();
+            $table->bigInteger('DUAL')->primary()->autoIncrement();
             $table->string('SERIEDOC', 8)->nullable();
             $table->integer('NUMERODOC')->nullable();
             $table->date('FECHAEMISION')->nullable();
