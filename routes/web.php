@@ -15,7 +15,6 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-
 // para manejar la rutas de guia de remision
 Route::controller(GuiaRemisionController::class)->group(function () {
     Route::get('/guiaremision-crear', 'create')->name('guiaremision.create');
