@@ -60,8 +60,10 @@ class GuiaRemisionController extends Controller
         ]);
 
         $guia = new GuiaRemision();
+        $guia->DUAL = $request->input('DUAL');
         $guia->SERIEDOC = $request->input('SERIEDOC');
         $guia->NUMERODOC = $request->input('NUMERODOC');
+        $guia->FECHAEMISION = $request->input('FECHAEMISION');
         $guia->FECHATRASLADO = $request->input('FECHATRASLADO');
         $guia->PUNTOPARTIDA = $request->input('PUNTOPARTIDA');
         $guia->PUNTOLLEGADA = $request->input('PUNTOLLEGADA');
@@ -100,7 +102,7 @@ class GuiaRemisionController extends Controller
         $guia->save();
 
 
-        return redirect()->route('guias.create')->with('success', 'Guía creada exitosamente.');
+        return redirect()->route('guiaremision.create')->with('success', 'Guía creada exitosamente.');
     }
 
     // Actualizar registro
