@@ -17,7 +17,6 @@ class GuiaRemisionController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'DUAL' => 'required|integer',
             'SERIEDOC' => 'required|string|max:8', // Serie del documento (máximo 8 caracteres)
             'NUMERODOC' => 'required|integer', // Número de documento
             'FECHAEMISION' => 'required|date', // Fecha de emisión
@@ -60,7 +59,6 @@ class GuiaRemisionController extends Controller
         ]);
 
         $guia = new GuiaRemision();
-        $guia->DUAL = $request->input('DUAL');
         $guia->SERIEDOC = $request->input('SERIEDOC');
         $guia->NUMERODOC = $request->input('NUMERODOC');
         $guia->FECHAEMISION = $request->input('FECHAEMISION');
