@@ -8,13 +8,14 @@ use App\Http\Controllers\GuiaRemisionController;
 use App\Models\GuiaRemision;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::view('/creardo', 'guiaremision.crear')->name('guiaremision.crear');
 // para manejar la rutas de guia de remision
 Route::controller(GuiaRemisionController::class)->group(function () {
     Route::get('/guiaremision-crear', 'create')->name('guiaremision.create');
