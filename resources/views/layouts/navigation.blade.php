@@ -33,8 +33,6 @@
         x-transition:leave="transition ease-in duration-150"
         x-transition:leave-start="opacity-100 transform scale-100"
         x-transition:leave-end="opacity-0 transform scale-95">
-
-
         <nav class="flex flex-col space-y-2 px-2 py-3">
             <!-- Menu Items -->
             @foreach([
@@ -52,7 +50,23 @@
                 <x-dropdown align="left" width="48">
                     <x-slot name="trigger">
                         <button class="w-full flex items-center justify-between text-gray-600 bg-gray-100 hover:text-black hover:bg-gray-200 rounded-md py-2 px-3 transition">
-                            <div>{{ Auth::user()->name }}</div>
+                            <span class="inline-flex items-center">
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    width="24"
+                                    height="24"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round">
+                                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                                    <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                                    <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                                </svg>
+                                <div class="ml-2 space-x-2">{{ Auth::user()->name }}</div>
+                            </span>
                             <svg class="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
                                 <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                             </svg>

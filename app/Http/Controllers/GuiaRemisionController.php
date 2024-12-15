@@ -100,7 +100,7 @@ class GuiaRemisionController extends Controller
         $guia->save();
 
 
-        return redirect()->route('guiaremision.create')->with('success', 'Guía creada exitosamente.');
+        return redirect()->route('guiaremision.crear')->with('success', 'Guía creada exitosamente.');
     }
 
     // Actualizar registro
