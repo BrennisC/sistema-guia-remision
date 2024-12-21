@@ -1,149 +1,125 @@
 <x-app-layout>
-    <div class="max-w-7xl mx-auto bg-white p-6 rounded-lg shadow-md">
-        <h1 class="text-xl font-bold mb-4">Nueva Guía de Remisión</h1>
-        <form action="{{route('guia.store')}}" method=" POST">
-            @csrf
-            <!-- Cliente -->
-            <div class="mb-6">
-                <h2 class="font-semibold text-lg mb-2">1. Cliente</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium">Tipo Documento</label>
-                        <select class="w-full border-gray-300 rounded-md shadow-sm" name="tipo_documento">
-                            <option value="RUC">R.U.C.</option>
-                            <option value="DNI">D.N.I.</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium">N° Documento</label>
-                        <input type="text" class="w-full border-gray-300 rounded-md shadow-sm" name="numero_documento">
-                    </div>
-                    <div class="md:col-span-2">
-                        <label class="block text-sm font-medium">Nombre o Razón Social</label>
-                        <input type="text" class="w-full border-gray-300 rounded-md shadow-sm" name="razon_social">
-                    </div>
-                </div>
-            </div>
+    <div>
+        <x-slot name="header">
+            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
+                {{ __('Guía de Remisión') }}
+            </h2>
+        </x-slot>
 
-            <!-- Datos de Traslado -->
-            <div class="mb-6">
-                <h2 class="font-semibold text-lg mb-2">2. Datos de Traslado</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium">Motivo del Traslado</label>
-                        <select class="w-full border-gray-300 rounded-md shadow-sm" name="motivo_traslado">
-                            <option value="establecimientos">Traslado entre establecimientos de la misma empresa</option>
-                            <option value="venta">Venta</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium">Modalidad del Traslado</label>
-                        <select class="w-full border-gray-300 rounded-md shadow-sm" name="modalidad_traslado">
-                            <option value="privado">Transporte Privado</option>
-                            <option value="publico">Transporte Público</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium">Tipo de Vehículo</label>
-                        <input type="text" class="w-full border-gray-300 rounded-md shadow-sm" name="tipo_vehiculo">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium">Fecha Inicial de Traslado</label>
-                        <input type="date" class="w-full border-gray-300 rounded-md shadow-sm" name="fecha_traslado">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium">Peso Bruto (KG)</label>
-                        <input type="number" class="w-full border-gray-300 rounded-md shadow-sm" name="peso_bruto">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium">Número de Bultos</label>
-                        <input type="number" class="w-full border-gray-300 rounded-md shadow-sm" name="numero_bultos">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Datos del Transporte -->
-            <div class="mb-6">
-                <h2 class="font-semibold text-lg mb-2">3. Datos del Transporte</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div>
-                        <label class="block text-sm font-medium">Tipo Documento</label>
-                        <select class="w-full border-gray-300 rounded-md shadow-sm" name="tipo_documento_conductor">
-                            <option value="dni">D.N.I.</option>
-                            <option value="ruc">R.U.C.</option>
-                        </select>
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium">N° Documento</label>
-                        <input type="text" class="w-full border-gray-300 rounded-md shadow-sm" name="numero_documento_conductor">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium">Nombre Conductor</label>
-                        <input type="text" class="w-full border-gray-300 rounded-md shadow-sm" name="nombre_conductor">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium">Apellidos Conductor</label>
-                        <input type="text" class="w-full border-gray-300 rounded-md shadow-sm" name="apellidos_conductor">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium">N° Placa Vehículo</label>
-                        <input type="text" class="w-full border-gray-300 rounded-md shadow-sm" name="placa_vehiculo">
-                    </div>
-                    <div>
-                        <label class="block text-sm font-medium">Num. Brevete</label>
-                        <input type="text" class="w-full border-gray-300 rounded-md shadow-sm" name="num_brevete">
-                    </div>
-                </div>
-            </div>
-
-            <!-- Punto de Partida y Llegada -->
-            <div class="mb-6">
-                <h2 class="font-semibold text-lg mb-2">4. Punto de Partida</h2>
-                <div>
-                    <label class="block text-sm font-medium">Dirección</label>
-                    <input type="text" class="w-full border-gray-300 rounded-md shadow-sm" name="direccion_partida">
-                </div>
-                <div class="mt-4">
-                    <label class="block text-sm font-medium">Ubigeo</label>
-                    <input type="text" class="w-full border-gray-300 rounded-md shadow-sm" name="ubigeo_partida">
-                </div>
-            </div>
-
-            <div class="mb-6">
-                <h2 class="font-semibold text-lg mb-2">5. Punto de Llegada</h2>
-                <div>
-                    <label class="block text-sm font-medium">Dirección</label>
-                    <input type="text" class="w-full border-gray-300 rounded-md shadow-sm" name="direccion_llegada">
-                </div>
-                <div class="mt-4">
-                    <label class="block text-sm font-medium">Ubigeo</label>
-                    <input type="text" class="w-full border-gray-300 rounded-md shadow-sm" name="ubigeo_llegada">
-                </div>
-            </div>
-
-            <!-- Documento de Referencia -->
-            <div class="mb-6">
-                <h2 class="font-semibold text-lg mb-2">7. Documento de Referencia</h2>
-                <label class="block text-sm font-medium">Serie Correlativo</label>
-                <input type="text" class="w-full border-gray-300 rounded-md shadow-sm" name="serie_correlativo">
-            </div>
-
-            <!-- Productos o Servicios -->
-            <div class="mb-6">
-                <h2 class="font-semibold text-lg mb-2">Productos o Servicios</h2>
-                <textarea class="w-full border-gray-300 rounded-md shadow-sm" rows="3" name="productos_servicios"></textarea>
-            </div>
-
-            <!-- Botones -->
-            <div class="flex justify-between">
-                <button type="submit" class="bg-blue-500 text-black py-2 px-4 rounded-md hover:bg-blue-600">Enviar a SUNAT</button>
-                <div class="space-x-2">
-                    <button type="button" class="bg-green-500 text-black py-2 px-4 rounded-md hover:bg-green-600">Emitir Factura</button>
-                    <button type="button" class="bg-yellow-500 text-black py-2 px-4 rounded-md hover:bg-yellow-600">Emitir Boleta</button>
-                    <button type="button" class="bg-red-500 text-black py-2 px-4 rounded-md hover:bg-red-600">Nota de Venta</button>
-                </div>
-            </div>
-        </form>
     </div>
+    <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+        @if ($errors->any())
+        <div class="alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+        @endif
 
+        <!-- para mostrar que el mensaje se ha guardado -->
+        @if(session('success'))
+        <div class="bg-green-100border border-green-400 text-green-700 px-4 py-3 rounded relative" role="alert">
+            {{ session('success') }}
+        </div>
+        @endif
+
+        <div class="flex align-middle py-3 space-x-3 flex-grow bg-100 text-black">
+            <form action="{{ route('guiaremision.store') }}" method="POST" class="space-y-6 w-full">
+                @csrf
+
+                <div class="grid grid-rows-2 gap-6">
+                    {{-- Campos principales --}}
+                    <div class="grid grid-cols-2 gap-6">
+                        <label class="gap-2 space-x-20 rounded-md mb-auto" for="SERIEDOC">Serie Documento *</label>
+                        <input type="text" name="SERIEDOC" value="F001" maxlength="8" required class="w-4/5 px-3 py-2 rounded-md">
+
+
+                        <label class="gap-2 space-x-2" for="NUMERODOC">Número Documento *</label>
+                        <input type="number" name="NUMERODOC" value="1001" required class="w-1/2 px-1 py-2 rounded-md">
+
+                        <label class="gap-2 space-x-20 rounded-md mb-auto" for="FECHAEMISION">Fecha Emisión *</label>
+                        <input type="date" name="FECHAEMISION" value="{{ date('Y-m-d') }}" required class="w-1/2 px-3 py-2 rounded-md">
+
+                        <label class="gap-2 space-x-20 rounded-md mb-auto" for="FECHATRASLADO">Fecha Traslado</label>
+                        <input type="date" name="FECHATRASLADO" value="{{ date('Y-m-d', strtotime('+1 day')) }}" class="w-1/2 px-3 py-2 rounded-md">
+
+                        <label class="gap-2 space-x-20 rounded-md mb-auto" for="PUNTOPARTIDA">Punto Partida *</label>
+                        <input type="text" name="PUNTOPARTIDA" value="Av. Los Libertadores 123" maxlength="255" required class="">
+
+                        <label class="" for="PUNTOLLEGADA">Punto Llegada *</label>
+                        <input type="text" name="PUNTOLLEGADA" value="Jr. Las Camelias 456" maxlength="255" required class="w-1/2 px-3 py-2 rounded-md">
+                    </div>
+                    <div class="grid grid-cols-2 gap-6">
+                        {{-- Datos Destinatario --}}
+                        <label class="" for="RAZONSOCIALDESTINATARIO">Razón Social Destinatario *</label>
+                        <input type="text" name="RAZONSOCIALDESTINATARIO" value="Transportes SAC" maxlength="255" required class="w-1/2 px-3 py-2 rounded-md">
+
+                        <label class="" for="RUC">RUC *</label>
+                        <input type="text" name="RUC" value="20123456789" pattern="\d{11}" required class="w-1/2 px-3 py-2 rounded-md">
+                    </div>
+                    <div class="grid grid-cols-2 gap-6">
+                        {{-- Datos Transporte --}}
+                        <label class="" for="PLACA">Placa Vehículo</label>
+                        <input type="text" name="PLACA" value="ABC-123" maxlength="128" class="">
+
+                        <label class="" for="MARCA">Marca Vehículo</label>
+                        <input type="text" name="MARCA" value="Toyota" maxlength="64" class="">
+
+                        <label class="" for="MOTIVOTRASLADO">Motivo Traslado *</label>
+                        <input type="text" name="MOTIVOTRASLADO" value="Venta de mercadería" maxlength="128" required class="">
+
+                        <label class="" for="PESOTOTAL">Peso Total *</label>
+                        <input type="number" name="PESOTOTAL" value="1500.50" step="0.01" required class="">
+
+                        <label class="" for="UNIDADPESO">Unidad Peso *</label>
+                        <input type="text" name="UNIDADPESO" value="KGM" maxlength="4" required class="">
+
+                        <label class="" for="TOTALPAQUETES">Total de Paquetees</label>
+                        <input type="text" name="TOTALPAQUETES" value="10" maxlength="4" required class="">
+
+                        <label for="DOCREFERENCIA" class="">Documentos de Referencia</label>
+                        <input type="text" name="DOCREFERENCIA" value="DOC123" class="">
+
+                        <label for="ENVIOSUNAT" class="">Enviados a SUNAT</label>
+                        <input type="text" name="ENVIOSUNAT" value="0" class="">
+                    </div>
+
+                    {{-- Campos Adicionales --}}
+                    <div class="grid grid-cols-2 gap-6">
+                        <label class="" for="RAZONSOCIALTRANSPORTE">Razón Social Transporte</label>
+                        <input type="text" name="RAZONSOCIALTRANSPORTE" value="Logística Express S.A." maxlength="255" class="">
+
+                        <label class="" for="RUCTRANSPORTE">RUC Transporte</label>
+                        <input type="text" name="RUCTRANSPORTE" value="20987654321" pattern="\d{11}" class="">
+
+                        <label class="" for="NOTE">Notas Adicionales</label>
+                        <textarea name="NOTE" maxlength="128" class="">Entrega urgente</textarea>
+                    </div>
+
+                    {{-- Campos Opcionales --}}
+                    <div class="grid grid-cols-2 gap-6">
+                        <label class="" for="TIPODOCPAGO">Tipo Documento Pago</label>
+                        <input type="text" name="TIPODOCPAGO" value="FACT" maxlength="16" class="">
+
+                        <label class="" for="NROCOMPROBANTEPAGO">Número Comprobante Pago</label>
+                        <input type="text" name="NROCOMPROBANTEPAGO" value="001-00001234" maxlength="16" class="">
+
+                        <label class="" for="NROPEDIDO">Número Pedido</label>
+                        <input type="text" name="NROPEDIDO" value="PED-2024-001" maxlength="64" class="">
+
+                        <label class="" for="UBIGEOORIGEN">Ubigeo Origen</label>
+                        <input type="text" name="UBIGEOORIGEN" value="150101" maxlength="8" class="">
+                    </div>
+
+                    <div class="flex items-center justify-between">
+                        <button type="submit" class="bg-blue-500 text-black px-4 rounded focus:outline-none focus:shadow-outline">
+                            Crear
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
 </x-app-layout>

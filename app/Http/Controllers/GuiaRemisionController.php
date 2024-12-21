@@ -11,12 +11,12 @@ class GuiaRemisionController extends Controller
     // Crear nuevo registro
     public function create()
     {
-        return view('guiaremesion.guia');
+        return view('guiaremision.guia');
     }
 
     public function store(Request $request)
     {
-        $validated = $request->validate([
+        $request->validate([
             'SERIEDOC' => 'required|string|max:8', // Serie del documento (máximo 8 caracteres)
             'NUMERODOC' => 'required|integer', // Número de documento
             'FECHAEMISION' => 'required|date', // Fecha de emisión
@@ -34,14 +34,14 @@ class GuiaRemisionController extends Controller
             'NROCOMPROBANTEPAGO' => 'nullable|string|max:16', // Número de comprobante de pago
             'MOTIVOTRASLADO' => 'required|string|max:128', // Motivo del traslado
             'RUCTRANSPORTE' => 'nullable|digits:11', // RUC del transportista (11 dígitos)
-            'TIPOGUIA' => 'nullable|integer|min:0|max:1', // Tipo de guía (ej. 0 = regular, 1 = especial)
+            'TIPOGUIA' => 'nullable|string', // Tipo de guía (ej. 0 = regular, 1 = especial)
             'PESOTOTAL' => 'required|numeric|min:0', // Peso total
             'DOCREFERENCIA' => 'nullable|string|max:255', // Documento de referencia
             'ENVIOSUNAT' => 'nullable|boolean', // Envío a SUNAT (0 = no, 1 = sí)
             'FECHAENVIO' => 'nullable|date', // Fecha de envío a SUNAT
             'TIPODOCREFERENCIA' => 'nullable|string|max:2', // Tipo de documento de referencia
             'CONREFERENCIA' => 'nullable|boolean', // Con referencia (0 = no, 1 = sí)
-            'CODIGOTRASLADO' => 'nullable|string|max:2', // Código de traslado
+            'CODIGOTRASLADO' => 'nullable|string|max:3', // Código de traslado
             'TRASBORDOPROGRAMADO' => 'nullable|string|max:2', // Trasbordo programado
             'UNIDADPESO' => 'required|string|max:4|in:KGM', // Unidad de peso (ej. "KGM" para kilogramos)
             'TOTALPAQUETES' => 'nullable|integer|min:0', // Total de paquetes
@@ -58,10 +58,49 @@ class GuiaRemisionController extends Controller
             'CODIGOPAGO' => 'nullable|string|max:64', // Código de pago
         ]);
 
+        $guia = new GuiaRemision();
+        $guia->SERIEDOC = $request->input('SERIEDOC');
+        $guia->NUMERODOC = $request->input('NUMERODOC');
+        $guia->FECHAEMISION = $request->input('FECHAEMISION');
+        $guia->FECHATRASLADO = $request->input('FECHATRASLADO');
+        $guia->PUNTOPARTIDA = $request->input('PUNTOPARTIDA');
+        $guia->PUNTOLLEGADA = $request->input('PUNTOLLEGADA');
+        $guia->RAZONSOCIALDESTINATARIO = $request->input('RAZONSOCIALDESTINATARIO');
+        $guia->RUC = $request->input('RUC');
+        $guia->PLACA = $request->input('PLACA');
+        $guia->MARCA = $request->input('MARCA');
+        $guia->CERTINSCRIPCION = $request->input('CERTINSCRIPCION');
+        $guia->LICENCIACONDUCIR = $request->input('LICENCIACONDUCIR');
+        $guia->TIPODOCPAGO = $request->input('TIPODOCPAGO');
+        $guia->NROCOMPROBANTEPAGO = $request->input('NROCOMPROBANTEPAGO');
+        $guia->MOTIVOTRASLADO = $request->input('MOTIVOTRASLADO');
+        $guia->RUCTRANSPORTE = $request->input('RUCTRANSPORTE');
+        $guia->TIPOGUIA = $request->input('TIPOGUIA');
+        $guia->PESOTOTAL = $request->input('PESOTOTAL');
+        $guia->DOCREFERENCIA = $request->input('DOCREFERENCIA');
+        $guia->ENVIOSUNAT = $request->input('ENVIOSUNAT');
+        $guia->FECHAENVIO = $request->input('FECHAENVIO');
+        $guia->TIPODOCREFERENCIA = $request->input('TIPODOCREFERENCIA');
+        $guia->CONREFERENCIA = $request->input('CONREFERENCIA');
+        $guia->CODIGOTRASLADO = $request->input('CODIGOTRASLADO');
+        $guia->TRASBORDOPROGRAMADO = $request->input('TRASBORDOPROGRAMADO');
+        $guia->UNIDADPESO = $request->input('UNIDADPESO');
+        $guia->TOTALPAQUETES = $request->input('TOTALPAQUETES');
+        $guia->TRANSPORTMODECODE = $request->input('TRANSPORTMODECODE');
+        $guia->DNIS = $request->input('DNIS');
+        $guia->UBIGEOORIGEN = $request->input('UBIGEOORIGEN');
+        $guia->UBIGEODESTINO = $request->input('UBIGEODESTINO');
+        $guia->CONTENEDOR = $request->input('CONTENEDOR');
+        $guia->AEREOPUERTO = $request->input('AEREOPUERTO');
+        $guia->NOTE = $request->input('NOTE');
+        $guia->NROPEDIDO = $request->input('NROPEDIDO');
+        $guia->ORDENCOMPRA = $request->input('ORDENCOMPRA');
+        $guia->SCOP = $request->input('SCOP');
+        $guia->CODIGOPAGO = $request->input('CODIGOPAGO');
+        $guia->save();
 
-        GuiaRemision::create($validated);
 
-        return redirect()->route('dashboard')->with('success', 'Guía creada exitosamente.');
+        return redirect()->route('guiaremision.crear')->with('success', 'Guía creada exitosamente.');
     }
 
     // Actualizar registro
