@@ -58,48 +58,7 @@ class GuiaRemisionController extends Controller
             'CODIGOPAGO' => 'nullable|string|max:64', // Código de pago
         ]);
 
-        $guia = new GuiaRemision();
-        $guia->SERIEDOC = $request->input('SERIEDOC');
-        $guia->NUMERODOC = $request->input('NUMERODOC');
-        $guia->FECHAEMISION = $request->input('FECHAEMISION');
-        $guia->FECHATRASLADO = $request->input('FECHATRASLADO');
-        $guia->PUNTOPARTIDA = $request->input('PUNTOPARTIDA');
-        $guia->PUNTOLLEGADA = $request->input('PUNTOLLEGADA');
-        $guia->RAZONSOCIALDESTINATARIO = $request->input('RAZONSOCIALDESTINATARIO');
-        $guia->RUC = $request->input('RUC');
-        $guia->PLACA = $request->input('PLACA');
-        $guia->MARCA = $request->input('MARCA');
-        $guia->CERTINSCRIPCION = $request->input('CERTINSCRIPCION');
-        $guia->LICENCIACONDUCIR = $request->input('LICENCIACONDUCIR');
-        $guia->TIPODOCPAGO = $request->input('TIPODOCPAGO');
-        $guia->NROCOMPROBANTEPAGO = $request->input('NROCOMPROBANTEPAGO');
-        $guia->MOTIVOTRASLADO = $request->input('MOTIVOTRASLADO');
-        $guia->RUCTRANSPORTE = $request->input('RUCTRANSPORTE');
-        $guia->TIPOGUIA = $request->input('TIPOGUIA');
-        $guia->PESOTOTAL = $request->input('PESOTOTAL');
-        $guia->DOCREFERENCIA = $request->input('DOCREFERENCIA');
-        $guia->ENVIOSUNAT = $request->input('ENVIOSUNAT');
-        $guia->FECHAENVIO = $request->input('FECHAENVIO');
-        $guia->TIPODOCREFERENCIA = $request->input('TIPODOCREFERENCIA');
-        $guia->CONREFERENCIA = $request->input('CONREFERENCIA');
-        $guia->CODIGOTRASLADO = $request->input('CODIGOTRASLADO');
-        $guia->TRASBORDOPROGRAMADO = $request->input('TRASBORDOPROGRAMADO');
-        $guia->UNIDADPESO = $request->input('UNIDADPESO');
-        $guia->TOTALPAQUETES = $request->input('TOTALPAQUETES');
-        $guia->TRANSPORTMODECODE = $request->input('TRANSPORTMODECODE');
-        $guia->DNIS = $request->input('DNIS');
-        $guia->UBIGEOORIGEN = $request->input('UBIGEOORIGEN');
-        $guia->UBIGEODESTINO = $request->input('UBIGEODESTINO');
-        $guia->CONTENEDOR = $request->input('CONTENEDOR');
-        $guia->AEREOPUERTO = $request->input('AEREOPUERTO');
-        $guia->NOTE = $request->input('NOTE');
-        $guia->NROPEDIDO = $request->input('NROPEDIDO');
-        $guia->ORDENCOMPRA = $request->input('ORDENCOMPRA');
-        $guia->SCOP = $request->input('SCOP');
-        $guia->CODIGOPAGO = $request->input('CODIGOPAGO');
-        $guia->save();
-
-
+        GuiaRemision::create($request->all());
         return redirect()->route('guiaremision.crear')->with('success', 'Guía creada exitosamente.');
     }
 
