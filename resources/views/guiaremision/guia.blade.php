@@ -1,12 +1,5 @@
 <x-app-layout>
-    <div>
-        <x-slot name="header">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Guía de Remisión') }}
-            </h2>
-        </x-slot>
 
-    </div>
     <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
         @if ($errors->any())
         <div class="alert alert-danger">
@@ -25,13 +18,17 @@
         </div>
         @endif
 
-        <div class="flex align-middle py-3 space-x-3 flex-grow bg-100 text-black">
-            <form action="{{ route('guiaremision.store') }}" method="POST" class="space-y-6 w-full">
+        <div class="flex align-middle py-4 space-x-3 flex-grow bg-100  ">
+
+            <form action="{{ route('guiaremision.store') }}" method="POST" class="space-y-6 w-full bg-white p-4 rounded">
                 @csrf
+                <div>
+                    <h2 class="text-center text-3xl font-sans">Formulario de Guía de Remisión</h2>
+                </div>
 
                 <div class="grid grid-rows-2 gap-6">
                     {{-- Campos principales --}}
-                    <div class="grid grid-cols-2 gap-6">
+                    <div class="grid grid-cols-2 gap-6 space-y-4">
                         <label class="gap-2 space-x-20 rounded-md mb-auto" for="SERIEDOC">Serie Documento *</label>
                         <input type="text" name="SERIEDOC" value="F001" maxlength="8" required class="w-4/5 px-3 py-2 rounded-md">
 
@@ -51,7 +48,7 @@
                         <label class="" for="PUNTOLLEGADA">Punto Llegada *</label>
                         <input type="text" name="PUNTOLLEGADA" value="Jr. Las Camelias 456" maxlength="255" required class="w-1/2 px-3 py-2 rounded-md">
                     </div>
-                    <div class="grid grid-cols-2 gap-6">
+                    <div class="grid grid-cols-2 gap-6 space-y-4">
                         {{-- Datos Destinatario --}}
                         <label class="" for="RAZONSOCIALDESTINATARIO">Razón Social Destinatario *</label>
                         <input type="text" name="RAZONSOCIALDESTINATARIO" value="Transportes SAC" maxlength="255" required class="w-1/2 px-3 py-2 rounded-md">
@@ -59,7 +56,7 @@
                         <label class="" for="RUC">RUC *</label>
                         <input type="text" name="RUC" value="20123456789" pattern="\d{11}" required class="w-1/2 px-3 py-2 rounded-md">
                     </div>
-                    <div class="grid grid-cols-2 gap-6">
+                    <div class="grid grid-cols-2 gap-6 space-y-4">
                         {{-- Datos Transporte --}}
                         <label class="" for="PLACA">Placa Vehículo</label>
                         <input type="text" name="PLACA" value="ABC-123" maxlength="128" class="">
@@ -87,7 +84,8 @@
                     </div>
 
                     {{-- Campos Adicionales --}}
-                    <div class="grid grid-cols-2 gap-6">
+                    <div class="grid grid-cols-2 gap-6 space-y-4">
+                        <hr>
                         <label class="" for="RAZONSOCIALTRANSPORTE">Razón Social Transporte</label>
                         <input type="text" name="RAZONSOCIALTRANSPORTE" value="Logística Express S.A." maxlength="255" class="">
 
@@ -99,7 +97,7 @@
                     </div>
 
                     {{-- Campos Opcionales --}}
-                    <div class="grid grid-cols-2 gap-6">
+                    <div class="grid grid-cols-2 gap-6 space-y-4">
                         <label class="" for="TIPODOCPAGO">Tipo Documento Pago</label>
                         <input type="text" name="TIPODOCPAGO" value="FACT" maxlength="16" class="">
 
@@ -113,8 +111,18 @@
                         <input type="text" name="UBIGEOORIGEN" value="150101" maxlength="8" class="">
                     </div>
 
-                    <div class="flex items-center justify-between">
-                        <button type="submit" class="bg-blue-500 text-black px-4 rounded focus:outline-none focus:shadow-outline">
+                    <div class="flex items-center justify-between py-4">
+                        <button type="submit" style="background-color: #38A169;
+                            color: white;
+                            border: none;
+                            padding: 10px 20px;
+                            font-size: 16px;
+                            font-weight: bold;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            transition: background-color 0.3s ease, transform 0.2s ease;
+                            margin: auto;">
+                            
                             Crear
                         </button>
                     </div>
