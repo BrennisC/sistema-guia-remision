@@ -23,7 +23,7 @@
             <form action="{{ route('guiaremision.store') }}" method="POST" class="space-y-6 w-full bg-white p-4 rounded">
                 @csrf
                 <div>
-                    <h2 class="text-center text-3xl font-sans">Formulario de Guía de Remisión</h2>
+                    <h2 class="text-center text-3xl font-sans">Formulario de Guía de  la Remisión</h2>
                 </div>
 
                 <div class="grid grid-rows-2 gap-6">
