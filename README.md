@@ -76,3 +76,6 @@ Levanta el servidor local de Laravel:
 php artisan serve
 El servidor estará disponible en http://localhost:8000.
 ```
+# Ejecutar el servidor de desarrollo:
+``Intenta actualizar los pasos que siguen para el proyecto
+``Comunicate con el creador del repositorio
